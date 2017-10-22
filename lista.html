@@ -9,13 +9,8 @@
 	<h1>Listas enlazadas</h1>
 	<p id="p1"></p>
 
-	<textarea id="textarea"></textarea>
-	<button onClick="leer()">Listo</button>
-	
 	<div id="board"></div>
 
-
-	
 	<script>
 	 var Nodo = function (val) {
 	     this.valor = val;
@@ -100,16 +95,6 @@
 		 actual = actual.sig;
 	     }
 	     return nodos;	     
-	 }
-
-	 let lista = new Lista();
-
-	 var leer = function () {
-	     var s = document.getElementById('textarea').value;
-	     document.getElementById('p1').innerHTML = s;
-
-	     var hola = s.split(" ");
-	     alert(hola);
 	 }
 	</script>
     </body>
