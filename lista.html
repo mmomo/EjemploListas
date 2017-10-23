@@ -2,6 +2,8 @@
 <html>
     <head>
 	<title>Listas Enlazadas</title>
+	<meta charset="UTF-8" \>
+	<!-- agregamos el link al framework w3.css -->
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
     <body>
@@ -18,16 +20,23 @@
 	<script type="text/javascript" src="Lista.js"></script>
 
 	<script>
+	 // crear una nueva lista
 	 var lista = new Lista();
-	 lista.push("Perry");
-	 lista.push("Cesar");
-	 lista.push("Patito");
-	 lista.push("Momo");
-	 lista.push("Jimmy");
+
 	 
-	 // Codigo para el slider
+	 /*
+          * Codigo para el slider
+	  */
+
+	 // variable actual = inicio de la lista
 	 var actual = lista.head;
+	 // generar la vista inicial de actual
 	 Card(actual);
+
+	 /*
+	  * Cada vez que es presionado el boton de adelante, avanzamos un elemento el la
+	  * lista y generamos su 'card'
+	  */
 	 var adelante = function () {
 	     if (actual.sig) {
 		 actual = actual.sig;
@@ -35,7 +44,10 @@
 	     Card(actual);
 	     return actual;
 	 }
-
+	 
+	 /*
+	  * retrocedemos un elemento el la lista y generamos el 'card'
+ 	  */
 	 var atras = function () {
 	     if (actual.ant) {
 		 actual = actual.ant;
