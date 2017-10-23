@@ -9,93 +9,69 @@
 	<h1>Listas enlazadas</h1>
 	<p id="p1"></p>
 
-	<div id="board"></div>
+
+
+	<div id="board" class="w3-content w3-display-container">
+
+	    <button class="w3-button w3-black w3-display-left" onClick="atras()">&#10094;</button>
+	    <button class="w3-button w3-black w3-display-right" onClick="adelante()">&#10095;</button>
+	</div>
+
+
+	<script type="text/javascript" src="Lista.js"></script>
 
 	<script>
-	 var Nodo = function (val) {
-	     this.valor = val;
-	     this.sig = null;
-	 }
+
+	 var lista = new Lista();
+	 lista.push("Jacobo Dos Dos");
+	 lista.push("Cesar");
+	 lista.push("Patito");
+	 lista.push("Momo");
+	 lista.push("Jimmy");
+
+
 	 
-	 /* Lista Enlazada... ok*/
-	 var Lista = function () {
-	     this.head = null;
-	     this.length = 0;
-	 }
-	 
-	 Lista.prototype.push = function (val) {
-	     var nodo = new Nodo (val),
-		 actual = this.head;
-	     
-	     // Si la lista esta vacia
-	     if (!this.head) {
-		 this.head = nodo;
-		 this.length++;
+	 // Codigo para el slider
 
-		 //return nodo;
-	     } else {
-		 // recorrer la lista hasta llegar al final
-		 while (actual.sig) {
-		     actual = actual.sig;
-		 }
-		 actual.sig = nodo;
-		 length++;
-	     }
-	     this.mostrar();
-	     return nodo;
-	 }
-
-	 var Card = function (nodo) {
-	     var card = document.createElement('div');
-	     
-	     card.className = "w3-card-4 w3-purple";
-	     var sig;
-	     if (!nodo.sig) {
-		 sig = nodo.sig;
-	     } else {
-		 sig = nodo.sig.valor;
-	     }
-	     
-	     card.innerHTML = "<h1>" + nodo.valor + "</h1> <b>Sig: </b>" + sig;
-	     card.style = "width:200px; height:100px; padding:10px";
-
-	     document.getElementById('board').appendChild(card);	     
-	 }
-
-	 Lista.prototype.pop = function () {
-	     if (!this.head) {
-		 alert("Lista Vacia");
-	     } else {
-		 var actual = this.head;
-		 this.head = actual.sig;
-		 this.mostrar();
-		 return actual;
-	     }
-	 }
-
-	 Lista.prototype.popBack = function () {
-	     if (!this.head) {
-		 alert("Lista Vacia");
-	     } else {
-		 actual = this.head;
-		 while (actual.sig.sig) {
-		     actual = actual.sig;
-		 }
-		 actual.sig = null;
-	     }
-	 }
-	 
-	 Lista.prototype.mostrar = function () {
-	     document.getElementById('board').innerHTML = "";
-	     var nodos = [];
-	     actual = this.head;
-	     while (actual) {
-		 nodos.push(actual.valor);
-		 Card(actual);
+	 var actual = lista.head;
+	 Card(actual);
+	 var adelante = function () {
+	     if (actual.sig) {
 		 actual = actual.sig;
 	     }
-	     return nodos;	     
+	     Card(actual);
+	     return actual;
 	 }
+
+	 var atras = function () {
+	     if (actual.ant) {
+		 actual = actual.ant;
+	     }
+	     Card(actual);
+	     return actual;
+	 }
+	 
+
+	 
+	 /*
+	 var slideIndex = 1;
+	 showDivs(slideIndex);
+
+	 function plusDivs(n) {
+	     showDivs(slideIndex += n);
+	 }
+
+	 function showDivs(n) {
+	     var i;
+	     var x = document.getElementsByClassName("mySlides");
+	     if (n > x.length) {slideIndex = 1}    
+	     if (n < 1) {slideIndex = x.length}
+	     for (i = 0; i < x.length; i++) {
+		 x[i].style.display = "none";  
+	     }
+	     x[slideIndex-1].style.display = "block";  
+	 }
+	 */ 
 	</script>
     </body>
 </html>
