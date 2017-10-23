@@ -25,9 +25,40 @@ Lista.prototype.push = function (val) {
 	this.tail = nodo;
     }
     this.n++;
-    //this.mostrar();
     return nodo;
 }
+
+
+Lista.prototype.pop = function () {
+    if (!this.head) {
+	alert("Lista Vacia");
+    } else {
+	var actual = this.head;
+	this.head = actual.sig;
+	this.n--;
+	
+	return actual;
+    }
+}
+
+Lista.prototype.popBack = function () {
+    var actual = this.tail;
+    if (!this.head) {
+	alert("Lista Vacia");
+    } else if (this.head == actual) {
+	this.tail = null;
+	this.head = null;
+	this.n--;
+	return actual;
+
+    }else {
+	this.tail = actual.ant;
+	this.tail.sig = null;
+	this.n--;
+	return actual;
+    } 
+}
+
 
 var Card = function (nodo) {
 
@@ -51,65 +82,9 @@ var Card = function (nodo) {
     card.className = "mySlides w3-container w3-xlarge w3-card-4 w3-indigo";
     card.innerHTML = "<center><h1>" + nodo.valor + "</h1></center><b>Anterior: </b>" + ant + " <b>Siguiente: </b>" + sig;
 
-    // var elemento = document.getElementById('board');
-    //var child = document.getElementById('tail');
-    //elemento.insertBefore(card, child);
     document.getElementById('board').appendChild(card);	     
 }
 
-Lista.prototype.pop = function () {
-    if (!this.head) {
-	alert("Lista Vacia");
-    } else {
-	var actual = this.head;
-	this.head = actual.sig;
-	this.n--;
-	//this.mostrar();
-	return actual;
-    }
-}
-
-Lista.prototype.popBack = function () {
-    var actual = this.tail;
-    if (!this.head) {
-	alert("Lista Vacia");
-    } else if (this.head == actual) {
-	this.tail = null;
-	this.head = null;
-	this.n--;
-	this.mostrar();
-	return actual;
-
-    }else {
-	this.tail = actual.ant;
-	this.tail.sig = null;
-	this.n--;
-	this.mostrar();
-	return actual;
-    } 
-}
-
-Lista.prototype.mostrar = function () {
-/*   document.getElementById('board').innerHTML = "<div id='head' class='mySlides w3-container w3-yellow'>\
-                                                   <center><h1>Head</h1></center> </div>\
-                                                 <div id='tail' class='mySlides w3-container w3-yellow'>\
-                                                   <center><h1>Tail</h1></center> </div>\
-                                                 <button class='w3-button w3-black w3-display-left' onclick='plusDivs(-1)'>&#10094;</button>\
-                                                 <button class='w3-button w3-black w3-display-right' onclick='plusDivs(1)'>&#10095;</button>";
-*/
-       document.getElementById('board').innerHTML = "\
-                                                 <button class='w3-button w3-black w3-display-left' onclick='plusDivs(-1)'>&#10094;</button>\
-                                                 <button class='w3-button w3-black w3-display-right' onclick='plusDivs(1)'>&#10095;</button>";
-
-    
-    var nodos = [];
-    actual = this.head;
-    while (actual) {
-	nodos.push(actual.valor);
-	Card(actual);
-	actual = actual.sig;
-    }
-}
 
 Lista.prototype.print = function () {
     var s = '';

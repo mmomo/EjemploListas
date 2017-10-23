@@ -7,9 +7,6 @@
     <body>
 	
 	<h1>Listas enlazadas</h1>
-	<p id="p1"></p>
-
-
 
 	<div id="board" class="w3-content w3-display-container">
 
@@ -21,18 +18,14 @@
 	<script type="text/javascript" src="Lista.js"></script>
 
 	<script>
-
 	 var lista = new Lista();
 	 lista.push("Jacobo Dos Dos");
 	 lista.push("Cesar");
 	 lista.push("Patito");
 	 lista.push("Momo");
 	 lista.push("Jimmy");
-
-
 	 
 	 // Codigo para el slider
-
 	 var actual = lista.head;
 	 Card(actual);
 	 var adelante = function () {
@@ -51,27 +44,6 @@
 	     return actual;
 	 }
 	 
-
-	 
-	 /*
-	 var slideIndex = 1;
-	 showDivs(slideIndex);
-
-	 function plusDivs(n) {
-	     showDivs(slideIndex += n);
-	 }
-
-	 function showDivs(n) {
-	     var i;
-	     var x = document.getElementsByClassName("mySlides");
-	     if (n > x.length) {slideIndex = 1}    
-	     if (n < 1) {slideIndex = x.length}
-	     for (i = 0; i < x.length; i++) {
-		 x[i].style.display = "none";  
-	     }
-	     x[slideIndex-1].style.display = "block";  
-	 }
-	 */ 
 	</script>
     </body>
 </html>
